@@ -1,0 +1,25 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "React basics and advance",
+  "main": "App.js",
+  "scripts": {
+    "test": "Jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/shwetamoharil/React.git"
+  },
+  "keywords": [
+    "React"
+  ],
+  "author": "Shweta Moharil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shwetamoharil/React/issues"
+  },
+  "homepage": "https://github.com/shwetamoharil/React#readme",
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  }
+}
