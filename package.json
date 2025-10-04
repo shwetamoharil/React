@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "React basics and advance",
   "scripts": {
+    "start": "parcel index.html assets/**",
+    "build": "parcel build index.html",
     "test": "Jest"
   },
   "repository": {
