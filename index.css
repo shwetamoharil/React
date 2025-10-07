@@ -28,8 +28,9 @@
 .res-card {
   padding: 5px;
   width: 200px;
-  height: 300px;
+  height: auto;
   border: 1px solid black;
+  word-wrap: break-word;
 }
 
 .res-card:hover {
@@ -39,4 +40,14 @@
 
 .res-logo {
   width: 100%;
+  height: 180px;
+}
+
+.filter {
+  margin: 10px 0;
+}
+
+.res-container {
+  display: flex;
+  column-gap: 5px;
 }
