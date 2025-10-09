@@ -1,9 +1,9 @@
 import RestaurantCard from "./RestaurantCard";
-import { resList } from "../utils/constants";
 import { useEffect, useState } from "react";
+import ShimmerUI from "./ShimmerUI";
 
 const Body = () => {
-  const [restaurantList, setRestaurantList] = useState(resList);
+  const [restaurantList, setRestaurantList] = useState([]);
 
   useEffect(() => {
     console.log("useEffect called");
@@ -29,6 +29,10 @@ const Body = () => {
     );
     setRestaurantList(filteredList);
   };
+
+  if (restaurantList?.length === 0) {
+    return <ShimmerUI />;
+  }
 
   return (
     <div className="body">

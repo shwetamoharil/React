@@ -52,3 +52,14 @@
   column-gap: 5px;
   flex-direction: row;
 }
+
+.shimmer-container {
+  display: flex;
+  column-gap: 5px;
+}
+
+.shimmer-card {
+  height: 450px;
+  width: 200px;
+  background-color: #f0f0f0;
+}
