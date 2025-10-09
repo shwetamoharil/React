@@ -6,7 +6,6 @@ const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect called");
     fetchData();
   }, []);
 
@@ -18,8 +17,6 @@ const Body = () => {
     const refinedData = json?.data?.cards?.filter((card) =>
       card?.card?.card?.["@type"]?.includes("food.v2.Restaurant")
     );
-    console.log("json:", json?.data?.cards);
-    console.log("res:", refinedData);
     setRestaurantList(refinedData);
   };
 

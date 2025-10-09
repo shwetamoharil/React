@@ -49,8 +49,10 @@
 
 .res-container {
   display: flex;
-  column-gap: 5px;
+  column-gap: 20px;
   flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 10px;
 }
 
 .shimmer-container {
