@@ -1,9 +1,27 @@
 import RestaurantCard from "./RestaurantCard";
 import { resList } from "../utils/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState(resList);
+
+  useEffect(() => {
+    console.log("useEffect called");
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.52110&lng=73.85020&collection=80435&tags=layout_CCS_PureVeg&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+    );
+    const json = await data.json();
+    const refinedData = json?.data?.cards?.filter((card) =>
+      card?.card?.card?.["@type"]?.includes("food.v2.Restaurant")
+    );
+    console.log("json:", json?.data?.cards);
+    console.log("res:", refinedData);
+    setRestaurantList(refinedData);
+  };
 
   const onTopRatedRestaurantClick = () => {
     const filteredList = restaurantList.filter(
@@ -11,6 +29,7 @@ const Body = () => {
     );
     setRestaurantList(filteredList);
   };
+
   return (
     <div className="body">
       <div className="filter">

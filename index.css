@@ -50,4 +50,5 @@
 .res-container {
   display: flex;
   column-gap: 5px;
+  flex-direction: row;
 }
