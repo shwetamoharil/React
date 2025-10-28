@@ -45,6 +45,14 @@
 
 .filter {
   margin: 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-btn {
+  height: fit-content;
+  cursor: pointer;
 }
 
 .res-container {

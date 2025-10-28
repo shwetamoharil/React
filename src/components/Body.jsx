@@ -4,6 +4,8 @@ import ShimmerUI from "./ShimmerUI";
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
+  const [filteredRestaurantList, setFilteredRestaurantList] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -18,13 +20,23 @@ const Body = () => {
       card?.card?.card?.["@type"]?.includes("food.v2.Restaurant")
     );
     setRestaurantList(refinedData);
+    setFilteredRestaurantList(refinedData);
   };
 
   const onTopRatedRestaurantClick = () => {
     const filteredList = restaurantList.filter(
-      (res) => res?.card?.card?.info?.avgRating > 4.2
+      (res) => Number(res?.card?.card?.info?.avgRating) > 4.2
     );
-    setRestaurantList(filteredList);
+    setFilteredRestaurantList(filteredList);
+  };
+
+  const onSearchClickHanlder = () => {
+    const searchList = restaurantList?.filter((res) =>
+      res?.card?.card?.info?.name
+        ?.toLowerCase()
+        ?.includes(searchText.toLowerCase())
+    );
+    setFilteredRestaurantList(searchList);
   };
 
   if (restaurantList?.length === 0) {
@@ -34,12 +46,25 @@ const Body = () => {
   return (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button className="search-btn" onClick={onSearchClickHanlder}>
+            Search
+          </button>
+        </div>
         <button className="filter-btn" onClick={onTopRatedRestaurantClick}>
           Top Rated Restaurants
         </button>
       </div>
       <div className="res-container">
-        {restaurantList?.map((res, index) => (
+        {filteredRestaurantList?.map((res, index) => (
           <RestaurantCard
             name={res?.card?.card?.info?.name}
             cuisines={res?.card?.card?.info?.cuisines}
